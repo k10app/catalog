@@ -56,13 +56,23 @@ function startServer() {
   app.get(routePrefix + "/list", async (req, res) => {
     db.collection("catalog").find().toArray().then(
       (queryResult) => { res.send(queryResult) },
-      (err) => { res.statusCode(404).send("")}
+      (err) => { res.status(404).send("")}
     )
   });
   app.get(routePrefix + "/list/:catalogId([0-9]+)", async (req, res) => {
-    const itemSelect = req.params.catalogId;
+    var queryId= parseInt(req.params.catalogId)
+    console.log("query on ",queryId)
 
-    res.send(catalog[itemSelect]);
+    db.collection("catalog").findOne({id: queryId}).then(
+      (queryResult) => { 
+        if (queryResult) {
+          res.send(queryResult) 
+        }  else {
+          res.status(404).send("Invalid ID")
+        }
+      },
+      (err) => { res.status(404).send("")}
+    )
   });
 
   app.post(routePrefix + "/update", async (req, res) => {
