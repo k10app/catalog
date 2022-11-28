@@ -4,7 +4,7 @@ const fs = require("fs");
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
-const { MongoClient } = require('mongodb');
+const { MongoClient,ObjectId } = require('mongodb');
 
 var port = process.env.SERVER_PORT || 3001;
 
@@ -14,16 +14,20 @@ var routePrefix = process.env.ROUTE_PREFIX || "/catalog";
 
 const catalog = [
   {
-    id: 1,
     name: "sticker",
     description: "it's a Kasten sticker",
     price: 3,
     imgurl: "https://www.kasten.io/hubfs/Kasten%20logos/logo-kasten.io.svg",
     stock: 100,
   },
+  {
+    name: "mug",
+    description: "it's a Kasten mug",
+    price: 3,
+    imgurl: "https://www.kasten.io/hubfs/Kasten%20logos/logo-kasten.io.svg",
+    stock: 100,
+  },
 ];
-
-let index = 1;
 
 
 const clientData = {
@@ -59,29 +63,34 @@ function startServer() {
       (err) => { res.status(404).send("")}
     )
   });
-  app.get(routePrefix + "/list/:catalogId([0-9]+)", async (req, res) => {
-    var queryId= parseInt(req.params.catalogId)
-    console.log("query on ",queryId)
-
-    db.collection("catalog").findOne({id: queryId}).then(
-      (queryResult) => { 
-        if (queryResult) {
-          res.send(queryResult) 
-        }  else {
-          res.status(404).send("Invalid ID")
-        }
-      },
-      (err) => { res.status(404).send("")}
-    )
+  app.get(routePrefix + "/list/:catalogId([0-9a-zA-Z]{24})", async (req, res) => {
+    var queryId= req.params.catalogId
+    try {
+      var oid = ObjectId(queryId)
+      db.collection("catalog").findOne(oid).then(
+        (queryResult) => { 
+          if (queryResult) {
+            res.send(queryResult) 
+          }  else {
+            res.status(404).send("Invalid ID")
+          }
+        },
+        (err) => { res.status(404).send("")}
+      )
+    } catch {
+      res.status(404).send("")
+    }
   });
 
-  app.post(routePrefix + "/update", async (req, res) => {
-    index += 1;
-    req.body.id = index;
-    catalog.push(req.body);
-    res.send({
-      status: "success",
-    });
+  app.post(routePrefix + "/add", async(req,res) => {
+    db.collection("catalog").insertOne(req.body).then(
+      (queryResult) => { res.send(queryResult) },
+      (err) => { res.status(404).send("")}
+    )
+  })
+
+  app.post(routePrefix + "/update/:catalogId([0-9a-zA-Z]{24})", async (req, res) => {
+    
   });
 
   app.listen(port, () => {
