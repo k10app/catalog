@@ -7,10 +7,10 @@ const cors = require("cors");
 const { MongoClient,ObjectId } = require('mongodb');
 const { json } = require("express");
 
-var port = process.env.SERVER_PORT || 3001;
+var port = process.env.SERVER_PORT || 80;
 
-// removed for local testing, uncomment before building Docker image.
-// var publicKey = fs.readFileSync(process.env.PUBLIC_KEY, "utf8");
+//public key not required since catalog is public
+
 var routePrefix = process.env.ROUTE_PREFIX || "/catalog";
 
 

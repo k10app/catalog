@@ -3,9 +3,8 @@ RUN mkdir /catalog
 WORKDIR /catalog
 COPY ["server.js","package.json","/catalog/"]
 RUN npm install
-VOLUME /catalog/certificates
-
-ENV PUBLIC_KEY /catalog/certificates/public.pub
+#VOLUME /catalog/certificates
+#ENV PUBLIC_KEY /catalog/certificates/public.pub
 ENV SERVER_PORT=80
 
 ENV MONGODB_HOST=localhost
