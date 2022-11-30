@@ -17,5 +17,7 @@ ENV MONGODB_DATABASE=catalog
 
 ENV ROUTE_PREFIX=/catalog
 
+ENV CATALOG_NOLOGOFOUND="https://www.kasten.io/hubfs/Kasten%20logos/logo-kasten.io.svg"
+
 EXPOSE ${SERVER_PORT}
 CMD ["node","/catalog/server.js"]
