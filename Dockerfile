@@ -18,5 +18,8 @@ ENV ROUTE_PREFIX=/catalog
 
 ENV CATALOG_NOLOGOFOUND="https://www.kasten.io/hubfs/Kasten%20logos/logo-kasten.io.svg"
 
+VOLUME /catalog/init
+ENV CATALOG_INIT_FILE="/catalog/init/catalog.json"
+
 EXPOSE ${SERVER_PORT}
 CMD ["node","/catalog/server.js"]

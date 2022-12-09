@@ -1,0 +1,16 @@
+[
+    {
+      "name": "sticker",
+      "description": "it's a Kasten sticker",
+      "price": 3,
+      "imgurl": "/static/static-sticker-export-plain.svg",
+      "stock": 100
+    },
+    {
+      "name": "mug",
+      "description": "it's a Kasten mug",
+      "price": 3,
+      "imgurl": "/static/static-mug-export-plain.svg",
+      "stock": 100
+    }
+  ]

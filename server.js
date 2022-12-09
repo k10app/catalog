@@ -22,22 +22,31 @@ function nok(res,message="",preMessage="internal error") {
   var txt = JSON.parse(`{"status":"error","message":"`+preMessage+((message=="")?"":": "+message)+`"}`);
   res.status(500).send(txt);
 }
-const initCatalog = [
+var initCatalog = [
   {
     name: "sticker",
     description: "it's a Kasten sticker",
     price: 3,
-    imgurl: "https://www.kasten.io/hubfs/Kasten%20logos/logo-kasten.io.svg",
+    imgurl: "/static/static-sticker-export-plain.svg",
     stock: 100,
   },
   {
     name: "mug",
     description: "it's a Kasten mug",
     price: 3,
-    imgurl: "https://www.kasten.io/hubfs/Kasten%20logos/logo-kasten.io.svg",
+    imgurl: "/static/static-mug-export-plain.svg",
     stock: 100,
   },
 ];
+
+
+try {
+  let tryCatalog = JSON.parse(fs.readFileSync(process.env.CATALOG_INIT_FILE || "/catalog/init/catalog.json" ))
+  initCatalog = tryCatalog
+} catch(error) {
+  console.log("Couldn't find init file, proceeding with built in :",error)
+}
+
 
 
 const clientData = {
