@@ -1,7 +1,7 @@
 FROM node:current-alpine
 RUN mkdir /catalog
 WORKDIR /catalog
-COPY ["server.js","package.json","/catalog/"]
+COPY ["server.js","hackSVG.js","package.json","/catalog/"]
 RUN npm install
 #VOLUME /catalog/certificates
 #ENV PUBLIC_KEY /catalog/certificates/public.pub

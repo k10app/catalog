@@ -1,0 +1,155 @@
+function hackSVG() {
+    return `
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <!-- Created with Inkscape (http://www.inkscape.org/) -->
+    
+    <svg
+       width="210.0833mm"
+       height="92.240402mm"
+       viewBox="0 0 210.0833 92.240402"
+       version="1.1"
+       id="svg15025"
+       sodipodi:docname="hackattackconsole.svg"
+       inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+       xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+       xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+       xmlns="http://www.w3.org/2000/svg"
+       xmlns:svg="http://www.w3.org/2000/svg">
+      <sodipodi:namedview
+         id="namedview15027"
+         pagecolor="#ffffff"
+         bordercolor="#666666"
+         borderopacity="1.0"
+         inkscape:showpageshadow="2"
+         inkscape:pageopacity="0.0"
+         inkscape:pagecheckerboard="0"
+         inkscape:deskcolor="#d1d1d1"
+         inkscape:document-units="mm"
+         showgrid="false"
+         inkscape:zoom="0.76167929"
+         inkscape:cx="240.2586"
+         inkscape:cy="396.49233"
+         inkscape:window-width="1920"
+         inkscape:window-height="1009"
+         inkscape:window-x="-8"
+         inkscape:window-y="-8"
+         inkscape:window-maximized="1"
+         inkscape:current-layer="layer1" />
+      <defs
+         id="defs15022">
+        <rect
+           x="317.71902"
+           y="2.625777"
+           width="560.60339"
+           height="351.85413"
+           id="rect15199" />
+        <rect
+           x="102.4053"
+           y="206.1235"
+           width="149.6693"
+           height="182.49152"
+           id="rect15191" />
+        <inkscape:path-effect
+           effect="mirror_symmetry"
+           start_point="88.849216,21.226308"
+           end_point="88.849216,104.61279"
+           center_point="88.849216,62.919549"
+           id="path-effect12385"
+           is_visible="true"
+           lpeversion="1.2"
+           lpesatellites=""
+           mode="free"
+           discard_orig_path="false"
+           fuse_paths="true"
+           oposite_fuse="false"
+           split_items="false"
+           split_open="false"
+           link_styles="false" />
+      </defs>
+      <g
+         inkscape:label="Layer 1"
+         inkscape:groupmode="layer"
+         id="layer1"
+         transform="translate(-71.693794,-44.195588)">
+        <g
+           id="g12445"
+           transform="matrix(0.82592986,0,0,0.82592986,36.185784,23.402159)"
+           style="fill:#3438cf">
+          <ellipse
+             style="opacity:0.998192;fill:#3438cf;fill-opacity:1;stroke:none;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stop-color:#000000"
+             id="path12439"
+             cx="76.847404"
+             cy="56.426414"
+             rx="6.9861279"
+             ry="5.9113388" />
+          <ellipse
+             style="opacity:0.998192;fill:#3438cf;fill-opacity:1;stroke:none;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stop-color:#000000"
+             id="ellipse12441"
+             cx="100.49276"
+             cy="56.426414"
+             rx="6.9861279"
+             ry="5.9113388" />
+        </g>
+        <path
+           style="fill:#4c5bdc;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 88.849609,25.175781 c -1.045195,0.1939 -8.403121,1.752139 -16.248047,8.47461 -5.001459,4.285848 -10.265635,13.461655 -10.05664,20.044921 0.354191,11.156888 5.800166,19.737088 4.808594,30.855469 -0.73626,8.255603 -14.689454,20.062499 -14.689454,20.062499 l 13.972657,-0.35937 c 0,0 32.283786,65.59569 10.748047,-14.330082 -4.885447,-16.731105 -26.702682,-32.605317 -1.074219,-36.964844 3.424832,-0.851255 9.622268,1.036793 12.539062,2.046875 2.916794,-1.010082 9.114231,-2.89813 12.539061,-2.046875 25.62846,4.359527 3.81123,20.233739 -1.07422,36.964844 -21.535736,79.925772 10.7461,14.330082 10.7461,14.330082 l 13.97265,0.35937 c 0,0 -13.95124,-11.806896 -14.6875,-20.062499 -0.99157,-11.118381 4.45441,-19.698581 4.8086,-30.855469 0.20899,-6.583266 -5.05518,-15.759073 -10.05664,-20.044921 -7.844929,-6.722471 -15.202855,-8.28071 -16.248051,-8.47461 z"
+           id="path12020"
+           sodipodi:nodetypes="cssscccccc"
+           inkscape:path-effect="#path-effect12385"
+           inkscape:original-d="m 52.664656,104.61279 c 0,0 13.95252,-11.807129 14.68878,-20.062732 0.991572,-11.118381 -4.454712,-19.697192 -4.808903,-30.85408 -0.208995,-6.583267 5.055365,-15.758873 10.056824,-20.044721 8.471308,-7.25923 16.374523,-8.498331 16.374523,-8.498331 l 1.472789,30.436212 c 0,0 -9.553853,-3.770346 -14.138657,-2.630775 C 50.681549,57.31789 72.499354,73.1929 77.384801,89.924005 98.92054,169.84978 66.636912,104.25452 66.636912,104.25452 Z"
+           class="UnoptimicedTransforms"
+           transform="matrix(0.82592986,0,0,0.82592986,36.038315,23.402159)" />
+        <ellipse
+           style="opacity:0.998192;fill:#3438cf;fill-opacity:0.46461;stroke:none;stroke-width:0.165186;stroke-linecap:round;stroke-linejoin:round;stop-color:#000000"
+           id="path12553"
+           cx="109.42105"
+           cy="97.229233"
+           rx="32.69696"
+           ry="18.493755" />
+        <rect
+           style="opacity:0.998192;fill:#3438cf;fill-opacity:1;stroke:none;stroke-width:0.165186;stroke-linecap:round;stroke-linejoin:round;stop-color:#000000"
+           id="rect12499"
+           width="75.454514"
+           height="49.415314"
+           x="71.693794"
+           y="87.020676"
+           ry="8.5811033" />
+        <text
+           xml:space="preserve"
+           transform="matrix(0.26458333,0,0,0.26458333,76.174506,44.195588)"
+           id="text15189"
+           style="font-size:85.3333px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:none;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect15191);fill:#ffffff"><tspan
+             x="102.40625"
+             y="282.98739"
+             id="tspan15409">$</tspan></text>
+        <text
+           xml:space="preserve"
+           transform="matrix(0.26458333,0,0,0.26458333,74.868796,44.195588)"
+           id="text15197"
+           style="font-size:96px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:none;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect15199);fill:#3438cf"><tspan
+             x="317.71875"
+             y="89.097425"
+             id="tspan15411">HACK 
+    </tspan><tspan
+             x="317.71875"
+             y="209.09742"
+             id="tspan15413">ATTACK 
+    </tspan><tspan
+             x="317.71875"
+             y="329.09742"
+             id="tspan15415">CONSOLE</tspan></text>
+        <rect
+           style="opacity:0.998192;fill:#7c90db;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stop-color:#000000"
+           id="rect15259"
+           width="2.4315789"
+           height="89.273682"
+           x="152.29948"
+           y="45.237694"
+           ry="0" />
+      </g>
+    </svg>
+        
+    `
+}
+
+module.exports = { hackSVG }

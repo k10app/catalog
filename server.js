@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const { MongoClient,ObjectId } = require('mongodb');
 const { json } = require("express");
+const hackSVG = require("./hackSVG.js");
 
 var port = process.env.SERVER_PORT || 80;
 
@@ -108,6 +109,63 @@ function startServer() {
     }
   });
 
+  app.get(routePrefix+"/admin",async(req,res) => {
+    var answer = []
+
+    var col = 150
+
+    db.collection("catalog").find().toArray().then(
+      (queryResult) => { 
+        
+        answer.push("<html><head><title>Insecure Admin Page</title><style>body {font-family:arial; color: #333333;} #h3alert { color: #ee3333; }</style></head><body><div>"+hackSVG.hackSVG()+"</div><h3 id='h3alert'></h3><table>")
+        answer.push("<script> function route(n) { return '"+routePrefix+"'+'/'+n}")
+        answer.push("function txtById(id) { return document.getElementById('txt'+id).value }")
+        answer.push("function h3alert(a) {document.getElementById('h3alert').innerHTML = ((new Date())+' '+a)}")
+        answer.push("function hideById(id) { ['tr','trd'].forEach(el=>{document.getElementById(el+id).innerHTML = ''})}")
+        answer.push("function deleteItem(id) { fetch(route('delete/'+id),{'method':'delete'}).then((res)=> { if (res.ok) { h3alert('You just committed a crime!');hideById(id)} else {h3alert('Failed to commit crime ',err)}}).catch((err)=>{h3alert('Failed to commit crime ',err)}) }")
+        answer.push("function modifyItem(id) { fetch(route('update/'+id),{headers: {'Content-Type': 'application/json'},'body':txtById(id),'method':'post'}).then((res)=> { if (res.ok) { h3alert('You just committed a crime!')} else {h3alert('Failed to commit crime ',err)}}).catch((err)=>{h3alert('Failed to commit crime ',err)}) }")
+        answer.push("function addItem() {var p = JSON.parse(txtById('add')); var arr=(Array.isArray(p))?p:[p];var promises=[];arr.forEach(el=>{promises += fetch(route('add'),{headers: {'Content-Type': 'application/json'},'body':JSON.stringify(el),'method':'post'}); Promise.all(promises).then((res)=>{location.reload()})}) }")
+        answer.push("</script>")
+        queryResult.forEach(ci => {
+          var cid = ""+ci._id
+          delete ci._id
+          answer.push("<tr id='tr"+cid+"'>")
+          answer.push("<td><a href='#' onclick='deleteItem(\""+cid+"\");return false'>DEL</a> | <a href='#' onclick='modifyItem(\""+cid+"\");return false'>UPD</a></td>")
+          answer.push("<td>"+cid+"</td>")
+          answer.push("<td>"+ci.name+"</td>")
+          answer.push("</tr><tr id='trd"+cid+"'>")
+          answer.push("<td colspan=\"3\"><textarea id='txt"+cid+"' cols='"+col+"' rows='10'>"+JSON.stringify(ci, null, 2)+"</textarea></td>")
+          answer.push("</tr>")
+        })
+        answer.push("<tr >")
+        answer.push("<td colspan=\"3\"><a href='#' onclick='addItem();return false'>ADD</a></td></tr><tr>")
+        answer.push("<td colspan=\"3\"><textarea id='txtadd' cols='"+col+"' rows='30'>"+JSON.stringify([{
+          "name":"mug","description":"","price":10,"imgurl":"/static/logokastenio.svg","stock":1000
+        },], null, 2)+"</textarea></td>")
+        answer.push("</tr>")     
+
+        answer.push("</table></head></html>")
+        res.send(answer.join("\n"))
+      },
+      (err) => { 
+        console.log("can not list",err)
+        nok(res)
+      }
+    )
+    
+
+    
+  })
+  app.delete(routePrefix + "/delete/:catalogId([0-9a-zA-Z]{24})", async (req, res) => {
+    db.collection("catalog").findOneAndDelete({ _id:ObjectId(req.params.catalogId)}).then(
+      (queryResult) => { ok(res,"") },
+      (err) => { 
+        console.log("Could delete",err)
+        nok(res,"Could not delete")
+      }
+    )
+  });
+
   app.post(routePrefix + "/add", async(req,res) => {
     if (req.body.price && req.body.name) {
       var newItem = {
@@ -132,7 +190,18 @@ function startServer() {
   })
 
   app.post(routePrefix + "/update/:catalogId([0-9a-zA-Z]{24})", async (req, res) => {
-    nok(res,"Not implemented, use bulk update for now, even with one transaction")
+    var id = req.params.catalogId
+    var replace = req.body
+    delete replace._id
+
+    console.log("mod",id,replace)
+    db.collection("catalog").findOneAndReplace({ _id:ObjectId(id)},replace).then(
+      (queryResult) => { ok(res,"") },
+      (err) => { 
+        console.log("Could update",err)
+        nok(res,"Could not update")
+      }
+    )
   });
   app.post(routePrefix+"/bulkStockUpdate",async(req,res) => {
     //console.log(req.body)
