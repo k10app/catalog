@@ -180,6 +180,7 @@ async function run() {
       (res) => { 
           if (res == 0) {
               console.log("Database is empty, init")
+              console.log(initCatalog)
               db.collection("catalog").insertMany(initCatalog).then(
                   (res) => {
                     console.log("ASYNC DB init successful")
